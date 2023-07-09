@@ -1,0 +1,145 @@
+
+@import '../variables';
+@import '../media-queries';
+
+@keyframes expand {
+	from {
+		width: 0px;
+	}
+	to {
+		width: 250px;
+	}
+}
+
+@mixin navigation {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px;
+  
+    .logo {
+      height: 80px;
+      user-select: none;
+      z-index: 1;
+      
+      a {
+        margin-left: 16px;
+        height: inherit;
+  
+        img {
+          height: inherit;
+        }
+      }
+    }
+  
+    .nav-links {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background-color: $dark-color;
+      align-items: center;
+      width: 70%;
+      transform: translateX(100%);
+      transition: transform 0.4s ease-in-out;
+  
+      @include mq ($large) {
+        top: 0;
+        position: relative;
+        min-height: 90px;
+        width: 60%;
+        background: none;
+        flex-direction: row;
+        justify-content: space-around;
+        transform: translateX(0%);
+      }
+  
+      li:first-child {
+        margin-top: 90px;
+  
+        @include mq ($large) {
+          margin-top: 0;
+        }
+      }
+  
+      li {
+        list-style-type: none;
+
+        &:last-child {
+          
+          a {
+            border-radius: 4px;
+            padding: 8px 16px;
+            background-color: $primary-color;
+
+            &:hover {
+              color: $accent-color;
+            }
+          }
+        }
+  
+        a {
+          padding: 3rem;
+          color: $accent-color;
+          text-decoration: none;
+          letter-spacing: 3px;
+          font-size: 1rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          transition: color 0.4s ease-in-out;
+  
+          &:hover {
+            color: $secondary-color;
+          }
+  
+          @include mq ($large) {
+            padding: 0;
+            letter-spacing: 2px;
+          }
+        }
+      }
+    }
+  
+    // Side navigation active class
+    .nav-active {
+      transform: translateX(0%);
+    }
+  
+    .menu {
+      margin-right: 16px;
+  
+      div {
+        position: relative;
+        width: 30px;
+        height: 3px;
+        background-color: $accent-color;
+        margin: 8px;
+        transition: all 0.3s ease;
+      }
+  
+      @include mq ($large) {
+        display: none;
+      }
+    }
+  
+    // Menu toggle class
+    .toggle {
+  
+      .line1 {
+        transform: rotate(-45deg) translate(-8px, 8px);
+      }
+  
+      .line2 {
+        opacity: 0;
+      }
+  
+      .line3 {
+        transform: rotate(45deg) translate(-8px, -8px);
+      }
+    }
+  }
+}

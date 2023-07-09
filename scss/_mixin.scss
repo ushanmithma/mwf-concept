@@ -1,0 +1,19 @@
+
+// Base
+@import './common';
+@import './variables';
+@import './media-queries';
+
+@mixin character-limit ($line-clamp) {
+   text-overflow: ellipsis;
+   overflow: hidden;
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-box;
+   -webkit-line-clamp: $line-clamp;
+   -moz-line-clamp: $line-clamp;
+   -ms-line-clamp: $line-clamp;
+   -webkit-box-orient: vertical;
+   -moz-box-orient: vertical;
+   -ms-box-orient: vertical;
+}
